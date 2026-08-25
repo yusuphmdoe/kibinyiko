@@ -1,13 +1,569 @@
 ---
 const greeting: string = "Hello, world Yusuph";
+const subtitle: string = "Welcome to your new digital experience.";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Hello, world</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A beautiful modern Astro landing page."
+    />
+    <title>{greeting}</title>
   </head>
+
   <body>
-    <h1>{greeting}</h1>
+    <main class="hero">
+      <div class="background">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="grid"></div>
+      </div>
+
+      <nav class="navbar">
+        <div class="logo">
+          <span class="logo-icon">Y</span>
+          <span>Yusuph</span>
+        </div>
+
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <a href="#get-started" class="nav-button">Get Started</a>
+      </nav>
+
+      <section class="content" id="home">
+        <div class="badge">
+          <span class="status-dot"></span>
+          Welcome to my world
+        </div>
+
+        <h1>
+          {greeting.split(" Yusuph")[0]}
+          <span>Yusuph</span>
+        </h1>
+
+        <p class="subtitle">
+          {subtitle}
+          <br />
+          Beautiful interfaces. Powerful ideas. Endless possibilities.
+        </p>
+
+        <div class="actions">
+          <a href="#get-started" class="primary-button">
+            Get Started
+            <span>→</span>
+          </a>
+
+          <a href="#about" class="secondary-button">
+            Explore More
+          </a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>01</strong>
+            <span>Creative</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="stat">
+            <strong>∞</strong>
+            <span>Possibilities</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="stat">
+            <strong>24/7</strong>
+            <span>Innovation</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="scroll-indicator">
+        <span></span>
+        Scroll to explore
+      </div>
+    </main>
+
+    <section class="about" id="about">
+      <div class="section-content">
+        <span class="section-label">ABOUT</span>
+        <h2>Built with <span>purpose.</span></h2>
+        <p>
+          A clean, modern foundation designed to grow with your ideas.
+          Replace this section with your story, company information,
+          products, or anything else you want to showcase.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-card" id="get-started">
+        <span class="section-label">LET'S BUILD</span>
+        <h2>Ready to create something amazing?</h2>
+        <a href="mailto:hello@example.com" class="primary-button">
+          Contact Me
+          <span>→</span>
+        </a>
+      </div>
+    </section>
   </body>
 </html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    background: #08090b;
+    color: #ffffff;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* Background */
+
+  .background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(
+        circle at 20% 20%,
+        rgba(212, 175, 55, 0.12),
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 80% 70%,
+        rgba(120, 90, 20, 0.12),
+        transparent 35%
+      ),
+      #08090b;
+  }
+
+  .grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.15;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px
+      );
+    background-size: 60px 60px;
+    mask-image: linear-gradient(to bottom, black, transparent);
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .orb-one {
+    width: 350px;
+    height: 350px;
+    background: rgba(212, 175, 55, 0.12);
+    top: 10%;
+    left: -100px;
+  }
+
+  .orb-two {
+    width: 300px;
+    height: 300px;
+    background: rgba(100, 80, 20, 0.12);
+    right: -80px;
+    bottom: 10%;
+    animation-delay: -4s;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+
+    50% {
+      transform: translateY(-30px) translateX(20px);
+    }
+  }
+
+  /* Navigation */
+
+  .navbar {
+    width: min(1200px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 28px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+  }
+
+  .logo-icon {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    border-radius: 12px;
+    color: #d4af37;
+    background: rgba(212, 175, 55, 0.08);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 34px;
+  }
+
+  .nav-links a {
+    color: #9b9b9f;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.25s ease;
+  }
+
+  .nav-links a:hover {
+    color: #ffffff;
+  }
+
+  .nav-button {
+    text-decoration: none;
+    color: #111;
+    background: #d4af37;
+    padding: 11px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.25s ease;
+  }
+
+  .nav-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+  }
+
+  /* Hero */
+
+  .content {
+    width: min(1000px, calc(100% - 48px));
+    margin: auto;
+    text-align: center;
+    padding: 80px 0;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.035);
+    border-radius: 999px;
+    color: #b8b8bc;
+    font-size: 12px;
+    backdrop-filter: blur(12px);
+    margin-bottom: 28px;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d4af37;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
+  }
+
+  h1 {
+    font-size: clamp(60px, 10vw, 125px);
+    line-height: 0.95;
+    letter-spacing: -7px;
+    font-weight: 800;
+    margin-bottom: 30px;
+  }
+
+  h1 span {
+    display: block;
+    background: linear-gradient(135deg, #ffffff 10%, #d4af37 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .subtitle {
+    color: #929298;
+    font-size: 17px;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: auto;
+  }
+
+  .actions {
+    margin-top: 38px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 22px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.25s ease;
+  }
+
+  .primary-button {
+    color: #111;
+    background: #d4af37;
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.12);
+  }
+
+  .primary-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+  }
+
+  .primary-button span {
+    font-size: 18px;
+  }
+
+  .secondary-button {
+    color: #ddd;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .secondary-button:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Stats */
+
+  .stats {
+    margin: 70px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .stat strong {
+    font-size: 20px;
+    color: #ffffff;
+  }
+
+  .stat span {
+    color: #6f7075;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .divider {
+    width: 1px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #5f6065;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .scroll-indicator span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #d4af37;
+  }
+
+  /* About */
+
+  .about {
+    padding: 150px 24px;
+    background: #0b0c0f;
+  }
+
+  .section-content {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .section-label {
+    color: #d4af37;
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 700;
+  }
+
+  h2 {
+    margin-top: 18px;
+    font-size: clamp(40px, 6vw, 70px);
+    letter-spacing: -3px;
+  }
+
+  h2 span {
+    color: #d4af37;
+  }
+
+  .section-content p {
+    color: #85868b;
+    max-width: 600px;
+    margin: 25px auto 0;
+    line-height: 1.8;
+    font-size: 16px;
+  }
+
+  /* Contact */
+
+  .contact {
+    padding: 100px 24px 150px;
+    background: #08090b;
+  }
+
+  .contact-card {
+    max-width: 900px;
+    margin: auto;
+    padding: 80px 40px;
+    text-align: center;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 28px;
+    background:
+      radial-gradient(
+        circle at center,
+        rgba(212, 175, 55, 0.08),
+        transparent 60%
+      ),
+      #0d0f12;
+  }
+
+  .contact-card h2 {
+    max-width: 650px;
+    margin: 20px auto 35px;
+  }
+
+  /* Mobile */
+
+  @media (max-width: 700px) {
+    .navbar {
+      width: calc(100% - 32px);
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .nav-button {
+      padding: 9px 14px;
+    }
+
+    .content {
+      width: calc(100% - 32px);
+      padding: 60px 0;
+    }
+
+    h1 {
+      font-size: clamp(55px, 18vw, 90px);
+      letter-spacing: -4px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+    }
+
+    .actions {
+      flex-direction: column;
+      align-items: stretch;
+      max-width: 280px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .actions a {
+      justify-content: center;
+    }
+
+    .stats {
+      gap: 18px;
+    }
+
+    .stat strong {
+      font-size: 17px;
+    }
+
+    .stat span {
+      font-size: 9px;
+    }
+
+    .about {
+      padding: 100px 24px;
+    }
+
+    .contact-card {
+      padding: 60px 24px;
+    }
+
+    .scroll-indicator {
+      display: none;
+    }
+  }
+</style>
