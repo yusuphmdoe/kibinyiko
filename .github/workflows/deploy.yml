@@ -8,10 +8,13 @@ on:
 jobs:
   build:
     uses: ./.github/workflows/build.yml
+    with:
+      node-version: 22.22
+      artifact-name: dist
   
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    needs: [build]
     steps:
       - uses: actions/download-artifact@v4
         with:
